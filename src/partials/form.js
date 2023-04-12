@@ -80,7 +80,7 @@ searchForm.addEventListener('submit', event => {
 
   getImages()
     .then(response => {
-      const totalHits = response.totalHits;
+      const totalHits = response.data.totalHits;
       if (totalHits == 0) {
         throw new Error(
           'Sorry, there are no images matching your search query. Please try again.'
@@ -89,7 +89,7 @@ searchForm.addEventListener('submit', event => {
         Notify.success(`Hooray! We found ${totalHits} images.`);
         totalPages = Math.ceil(totalHits / params.per_page);
       }
-      renderImages(response.hits);
+      renderImages(response.data.hits);
       const lightbox = new SimpleLightbox('.gallery a', {
         captionsData: 'alt',
         captionDelay: 250,
@@ -105,7 +105,7 @@ searchForm.addEventListener('submit', event => {
 loadMoreBtn.addEventListener('click', () => {
   getImages()
     .then(response => {
-      renderImages(response.hits);
+      renderImages(response.data.hits);
       const lightbox = new SimpleLightbox('.gallery a', {
         captionsData: 'alt',
         captionDelay: 250,
