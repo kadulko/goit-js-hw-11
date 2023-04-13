@@ -22,6 +22,7 @@ const getImages = async () => {
   try {
     const url = `https://pixabay.com/api/?${new URLSearchParams(params)}`;
     const response = await axios.get(url);
+    console.log('Response from axios.get: ', response);
     return response;
   } catch (error) {
     Notify.failure(error.message);
