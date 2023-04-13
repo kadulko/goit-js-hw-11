@@ -21,7 +21,8 @@ let totalPages;
 const getImages = async () => {
   try {
     const url = `https://pixabay.com/api/?${new URLSearchParams(params)}`;
-    return (response = await axios.get(url));
+    const response = await axios.get(url);
+    return response;
   } catch (error) {
     Notify.failure(error.message);
   }
