@@ -23,7 +23,7 @@ const getImages = async () => {
     const url = `https://pixabay.com/api/?${new URLSearchParams(params)}`;
     return (response = await axios.get(url));
   } catch (error) {
-    Notify.failure(error.mssage);
+    Notify.failure(error.message);
   }
 };
 
@@ -80,6 +80,7 @@ searchForm.addEventListener('submit', event => {
 
   getImages()
     .then(response => {
+      console.log(response);
       const totalHits = response.data.totalHits;
       if (totalHits == 0) {
         throw new Error(
